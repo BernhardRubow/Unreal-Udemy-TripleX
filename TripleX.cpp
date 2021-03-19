@@ -1,12 +1,21 @@
 #include <iostream>
+#include <Windows.h>
 
-void PlayGame()
+void PrintIntroduction(int sum, int product)
 {
   std::cout << "You are a secret nixi agent breaking into a secure server room\nSecure by the most advance firewall in the the world the HAL9000";
   std::cout << std::endl;
   std::cout << "Enter the correct code to continue..." << std::endl
             << std::endl;
 
+  std::cout << "There are 3 numbers in the code" << std::endl;
+  std::cout << "They sum up to " << sum << std::endl;
+  std::cout << "The product of these numbers is " << std::endl;
+  std::cout << std::endl;
+}
+
+bool PlayGame()
+{
   int codeA = 4;
   int codeB = 3;
   int codeC = 2;
@@ -14,10 +23,7 @@ void PlayGame()
   int codeSum = codeA + codeB + codeC;
   int codeProduct = codeA * codeB * codeC;
 
-  std::cout << "There are 3 numbers in the code" << std::endl;
-  std::cout << "They sum up to " << codeSum << std::endl;
-  std::cout << "The product of these numbers is " << codeProduct << std::endl;
-  std::cout << std::endl;
+  PrintIntroduction(codeSum, codeProduct);
 
   int guessA, guessB, guessC;
   std::cout << "Hack the sever by entring the magic code: ";
@@ -43,7 +49,7 @@ void PlayGame()
 
   if (alarm)
   {
-    std::cout << "...\n...\n...HAL9000 > We see YOU!" << playerProdukt << std::endl;
+    std::cout << "...\n...\n...HAL9000 > I SEE YOU" << playerProdukt << std::endl;
   }
   else
   {
@@ -68,16 +74,28 @@ void PlayGame()
   if (playerSum == codeSum && playerProdukt == codeProduct)
   {
     std::cout << "\n\nYou hacked the server and transfered 1 trillion dollars \nto the bank account of the  \n\n    NIXI-Foudation\n\na secret organisation with the goal to globally \ndisturb Tutor-Sessions. \n\n";
+    return true;
   }
   else
   {
     std::cout << "\n\nYou entered the wrong code. You see some flashing \npolice car lights through your window. You were \narrested and never seen again!\n\n";
+    return false;
   }
 }
 
 int main()
 {
-  PlayGame();
+  bool continueLoop = true;
+
+  while (continueLoop)
+  {
+
+    system("cls");
+    continueLoop = PlayGame();
+    std::cin.clear();
+    std::cin.ignore();
+    system("pause");
+  }
 
   return 0;
 }
