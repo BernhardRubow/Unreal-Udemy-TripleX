@@ -1,9 +1,10 @@
 #include <iostream>
 #include <Windows.h>
 
-void PrintIntroduction(int sum, int product)
+void PrintIntroduction(int difficulty, int sum, int product)
 {
-  std::cout << "You are a secret nixi agent breaking into a secure server room\nSecure by the most advance firewall in the the world the HAL9000";
+  std::cout << "You are a secret nixi agent breaking into a secure level " << difficulty << " server room\n";
+  std::cout << "Secured by the most advance firewall in the the world the famous HAL9000";
   std::cout << std::endl;
   std::cout << "Enter the correct code to continue..." << std::endl
             << std::endl;
@@ -14,7 +15,7 @@ void PrintIntroduction(int sum, int product)
   std::cout << std::endl;
 }
 
-bool PlayGame()
+bool PlayGame(int difficulty)
 {
   int codeA = 4;
   int codeB = 3;
@@ -23,7 +24,7 @@ bool PlayGame()
   int codeSum = codeA + codeB + codeC;
   int codeProduct = codeA * codeB * codeC;
 
-  PrintIntroduction(codeSum, codeProduct);
+  PrintIntroduction(difficulty, codeSum, codeProduct);
 
   int guessA, guessB, guessC;
   std::cout << "Hack the sever by entring the magic code: ";
@@ -85,16 +86,23 @@ bool PlayGame()
 
 int main()
 {
-  bool continueLoop = true;
+  int difficultyLevel = 1;
 
-  while (continueLoop)
+  while (true)
   {
-
     system("cls");
-    continueLoop = PlayGame();
+    bool levelComplete = PlayGame(difficultyLevel);
     std::cin.clear();
     std::cin.ignore();
     system("pause");
+
+    if (levelComplete)
+    {
+      difficultyLevel++;
+    }
+    else
+    {
+    }
   }
 
   return 0;
