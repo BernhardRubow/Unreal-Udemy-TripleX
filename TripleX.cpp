@@ -1,6 +1,6 @@
 #include <iostream>
 
-int main()
+void PlayGame()
 {
   std::cout << "You are a secret nixi agent breaking into a secure server room\nSecure by the most advance firewall in the the world the HAL9000";
   std::cout << std::endl;
@@ -21,9 +21,7 @@ int main()
 
   int guessA, guessB, guessC;
   std::cout << "Hack the sever by entring the magic code: ";
-  std::cin >> guessA;
-  std::cin >> guessB;
-  std::cin >> guessC;
+  std::cin >> guessA >> guessB >> guessC;
 
   int playerSum = guessA + guessB + guessC;
   int playerProdukt = guessA * guessB * guessC;
@@ -75,6 +73,11 @@ int main()
   {
     std::cout << "\n\nYou entered the wrong code. You see some flashing \npolice car lights through your window. You were \narrested and never seen again!\n\n";
   }
+}
+
+int main()
+{
+  PlayGame();
 
   return 0;
 }
